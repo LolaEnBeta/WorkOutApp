@@ -1,30 +1,31 @@
 import React from 'react';
 
-class WorkoutForm extends React.Component {
+class ActivityForm extends React.Component {
     render() {
         return (
-            <div className="container">
+            <div className="container mt-4">
+                <label>Which activity did you do?</label>
                 <div>
-                    <select name="workout">
+                    <select name="activity">
                         <option value="">Select one</option>
                         <option value="pushups">Pushups</option>
                         <option value="abs">ABS</option>
                     </select>
                 </div>
 
-                <label htmlFor="reps">How many repetitions did you do?</label>
+                <label className="mt-4">How many repetitions did you do?</label>
 
                 <div>
                     <input type="text" name="reps" />
                 </div>
 
-                <label htmlFor="totalTime">How many time did you working out?</label>
+                <label className="mt-4">How many time did you work out?</label>
 
                 <div>
                     <input type="text" name="totalTime" />
                 </div>
 
-                <label htmlFor="weight">How many weight did you use?</label>
+                <label className="mt-4">How many weight did you use?</label>
 
                 <div>
                     <input type="text" name="weight" />
@@ -34,4 +35,4 @@ class WorkoutForm extends React.Component {
     }
 }
 
-export default WorkoutForm;
+export default ActivityForm;
