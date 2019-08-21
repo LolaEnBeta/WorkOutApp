@@ -64,6 +64,11 @@ class ActivityForm extends React.Component {
             id: this.state.counterId,
         }
 
+        typeInput.value = "";
+        repsInput.value = "";
+        totalTimeInput.value = "";
+        weightInput.value = "";
+
         this.props.onActivityCreated(newActivity);
     }
 }
