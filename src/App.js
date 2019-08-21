@@ -2,6 +2,13 @@ import React from 'react';
 import ActivityForm from './components/ActivityForm';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      activities:[]
+    }
+  }
+
   render() {
     const createActivity = activity => {
       let activities = this.state.activities;
