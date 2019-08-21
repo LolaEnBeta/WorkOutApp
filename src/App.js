@@ -19,6 +19,18 @@ class App extends React.Component {
         activities: activities,
       })
     }
+    const removeActivity = id => {
+      let activityIndex = this.state.activities.map(activity => {
+        return activity.id
+      }).indexOf(id);
+
+      let activities = this.state.activities;
+      activities.splice(activityIndex, 1);
+
+      this.setState({
+        activities: activities
+      });
+    }
 
     return (
       <div>
@@ -27,6 +39,7 @@ class App extends React.Component {
           {this.state.activities.map(activity => {
             return (
               <Activity
+                onActivityDeleted={removeActivity.bind(this)}
                 key={activity.id}
                 type={activity.type}
                 reps={activity.reps}

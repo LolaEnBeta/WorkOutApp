@@ -13,8 +13,15 @@ class Activity extends React.Component {
                     <li className="list-group-item">Weight: {this.props.weight}</li>
                     <li className="list-group-item">Id: {this.props.id}</li>
                 </ul>
+                <button onClick={this.deleteActivity.bind(this)}>
+                    Delete
+                </button>
             </div>
         );
+    }
+    deleteActivity() {
+        let activityId = this.props.id;
+        this.props.onActivityDeleted(activityId);
     }
 }
 
