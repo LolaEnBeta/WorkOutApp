@@ -45,31 +45,36 @@ class ActivityForm extends React.Component {
         );
     }
     saveActivity() {
+
         const typeInput = document.getElementById("type");
         const repsInput = document.getElementById("reps");
         const totalTimeInput = document.getElementById("totalTime");
         const weightInput = document.getElementById("weight");
 
-        let counterId = this.state.counterId + 1
+        if (typeInput.value === "" || repsInput.value === "") {
+            alert("You need to specify the activity and reps!");
+        } else {
+            let counterId = this.state.counterId + 1
 
-        this.setState({
-            counterId: counterId,
-        })
+            this.setState({
+                counterId: counterId,
+            })
 
-        let newActivity = {
-            type: typeInput.value,
-            reps: repsInput.value,
-            totalTime: totalTimeInput.value,
-            weight: weightInput.value,
-            id: this.state.counterId,
+            let newActivity = {
+                type: typeInput.value,
+                reps: repsInput.value,
+                totalTime: totalTimeInput.value,
+                weight: weightInput.value,
+                id: this.state.counterId,
+            }
+
+            typeInput.value = "";
+            repsInput.value = "";
+            totalTimeInput.value = "";
+            weightInput.value = "";
+
+            this.props.onActivityCreated(newActivity);
         }
-
-        typeInput.value = "";
-        repsInput.value = "";
-        totalTimeInput.value = "";
-        weightInput.value = "";
-
-        this.props.onActivityCreated(newActivity);
     }
 }
 
