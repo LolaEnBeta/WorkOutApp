@@ -19,6 +19,7 @@ class App extends React.Component {
         activities: activities,
       })
     }
+
     const removeActivity = id => {
       let activityIndex = this.state.activities.map(activity => {
         return activity.id
@@ -34,20 +35,29 @@ class App extends React.Component {
 
     return (
       <div>
-        <ActivityForm onActivityCreated={createActivity.bind(this)}/>
-        <div className="container">
-          {this.state.activities.map(activity => {
-            return (
-              <Activity
-                onActivityDeleted={removeActivity.bind(this)}
-                key={activity.id}
-                type={activity.type}
-                reps={activity.reps}
-                totalTime={activity.totalTime}
-                weight={activity.weight}
-                id={activity.id}/>
-            );}
-          )}
+        <nav className="navbar navbar-light bg-light">
+          <button className="btn btn-secondary">
+            Home
+          </button>
+
+        </nav>
+
+        <div>
+          <ActivityForm onActivityCreated={createActivity.bind(this)}/>
+          <div className="container">
+            {this.state.activities.map(activity => {
+              return (
+                <Activity
+                  onActivityDeleted={removeActivity.bind(this)}
+                  key={activity.id}
+                  type={activity.type}
+                  reps={activity.reps}
+                  totalTime={activity.totalTime}
+                  weight={activity.weight}
+                  id={activity.id}/>
+              );}
+            )}
+          </div>
         </div>
       </div>
     );
