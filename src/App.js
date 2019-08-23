@@ -1,11 +1,13 @@
 import React from 'react';
 import ActivityForm from './components/ActivityForm';
 import Activity from './components/Activity';
+import Calendar from 'react-calendar';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      date: new Date(),
       activities:[]
     }
   }
@@ -33,6 +35,12 @@ class App extends React.Component {
       });
     }
 
+    const onChange = date => {
+      this.setState({
+        date: date
+      });
+    }
+
     return (
       <div>
         <nav className="navbar navbar-light bg-light">
@@ -43,6 +51,11 @@ class App extends React.Component {
         </nav>
 
         <div>
+          <div className="container mt-5 ml-5">
+            <Calendar
+              onChange={onChange.bind(this)}
+              value={this.state.date}/>
+          </div>
           <ActivityForm onActivityCreated={createActivity.bind(this)}/>
           <div className="container">
             {this.state.activities.map(activity => {
