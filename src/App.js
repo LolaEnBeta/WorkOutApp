@@ -1,20 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import ActivityForm from './components/ActivityForm';
-import Activity from './components/Activity';
 import CalendarPage from './routers/CalendarPage';
+import ActivityFormPage from './routers/ActivityFormPage';
 
-
-function Form() {
-  const createActivity = activity => {
-    let activities = this.state.activities;
-    activities.push(activity);
-
-    this.setState({
-      activities: activities,
-    })
-  }
-  return (<ActivityForm onActivityCreated={createActivity.bind(this)}/>)
+function FormPage() {
+return(<ActivityFormPage />)
 }
 
 function Home() {
@@ -29,20 +19,6 @@ class App extends React.Component {
     }
   }
   render() {
-
-    const removeActivity = id => {
-      let activityIndex = this.state.activities.map(activity => {
-        return activity.id
-      }).indexOf(id);
-
-      let activities = this.state.activities;
-      activities.splice(activityIndex, 1);
-
-      this.setState({
-        activities: activities
-      });
-    }
-
     return (
       <Router>
         <div>
@@ -55,23 +31,7 @@ class App extends React.Component {
 
           <div>
             <Route exact path="/" component={Home} />
-            <Route path="/form/" component={Form} />
-            <div className="container">
-              {this.state.activities.map(activity => {
-                return (
-                  <Activity
-                    onActivityDeleted={removeActivity.bind(this)}
-                    key={activity.id}
-                    type={activity.type}
-                    reps={activity.reps}
-                    totalTime={activity.totalTime}
-                    weight={activity.weight}
-                    id={activity.id}
-                    date={this.state.date}
-                  />
-                );}
-              )}
-            </div>
+            <Route path="/form/" component={FormPage} />
           </div>
         </div>
       </Router>
