@@ -1,7 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ActivityForm from './components/ActivityForm';
 import Activity from './components/Activity';
 import Calendar from 'react-calendar';
+
 
 class App extends React.Component {
   constructor() {
@@ -42,37 +44,41 @@ class App extends React.Component {
     }
 
     return (
-      <div>
-        <nav className="navbar navbar-light bg-light">
-          <button className="btn btn-secondary">
-            Home
-          </button>
-
-        </nav>
-
+      <Router>
         <div>
-          <div className="container mt-5 ml-5">
-            <Calendar
-              onChange={onChange.bind(this)}
-              value={this.state.date}/>
-          </div>
-          <ActivityForm onActivityCreated={createActivity.bind(this)}/>
-          <div className="container">
-            {this.state.activities.map(activity => {
-              return (
-                <Activity
-                  onActivityDeleted={removeActivity.bind(this)}
-                  key={activity.id}
-                  type={activity.type}
-                  reps={activity.reps}
-                  totalTime={activity.totalTime}
-                  weight={activity.weight}
-                  id={activity.id}/>
-              );}
-            )}
+          <nav className="navbar navbar-light bg-light">
+            <button className="btn btn-secondary">
+              Home
+            </button>
+
+          </nav>
+
+          <div>
+            <div className="container mt-5 ml-5">
+              <Calendar
+                onChange={onChange.bind(this)}
+                value={this.state.date}/>
+            </div>
+            <ActivityForm onActivityCreated={createActivity.bind(this)}/>
+            <div className="container">
+              {this.state.activities.map(activity => {
+                return (
+                  <Activity
+                    onActivityDeleted={removeActivity.bind(this)}
+                    key={activity.id}
+                    type={activity.type}
+                    reps={activity.reps}
+                    totalTime={activity.totalTime}
+                    weight={activity.weight}
+                    id={activity.id}
+                    date={this.state.date}
+                  />
+                );}
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
