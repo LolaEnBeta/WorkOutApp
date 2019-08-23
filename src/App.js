@@ -2,27 +2,33 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ActivityForm from './components/ActivityForm';
 import Activity from './components/Activity';
-import Calendar from 'react-calendar';
+import CalendarPage from './routers/CalendarPage';
 
+
+function Form() {
+  const createActivity = activity => {
+    let activities = this.state.activities;
+    activities.push(activity);
+
+    this.setState({
+      activities: activities,
+    })
+  }
+  return (<ActivityForm onActivityCreated={createActivity.bind(this)}/>)
+}
+
+function Home() {
+  return(<CalendarPage />)
+}
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      date: new Date(),
-      activities:[]
+      activities: [],
     }
   }
-
   render() {
-    const createActivity = activity => {
-      let activities = this.state.activities;
-      activities.push(activity);
-
-      this.setState({
-        activities: activities,
-      })
-    }
 
     const removeActivity = id => {
       let activityIndex = this.state.activities.map(activity => {
@@ -37,29 +43,19 @@ class App extends React.Component {
       });
     }
 
-    const onChange = date => {
-      this.setState({
-        date: date
-      });
-    }
-
     return (
       <Router>
         <div>
           <nav className="navbar navbar-light bg-light">
-            <button className="btn btn-secondary">
-              Home
-            </button>
-
+            <ul>
+              <Link className="btn btn-secondary mr-3" to="/">Home</Link>
+              <Link className="btn btn-secondary mr-3" to="/form/">Form</Link>
+            </ul>
           </nav>
 
           <div>
-            <div className="container mt-5 ml-5">
-              <Calendar
-                onChange={onChange.bind(this)}
-                value={this.state.date}/>
-            </div>
-            <ActivityForm onActivityCreated={createActivity.bind(this)}/>
+            <Route exact path="/" component={Home} />
+            <Route path="/form/" component={Form} />
             <div className="container">
               {this.state.activities.map(activity => {
                 return (
