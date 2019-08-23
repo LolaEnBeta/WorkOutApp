@@ -9,35 +9,44 @@ class ActivityForm extends React.Component {
     }
     render() {
         return (
-            <div className="container mt-4">
-                <label>Which activity did you do?</label>
-                <div>
-                    <select name="type" id="type">
-                        <option value="">Select one</option>
-                        <option value="Pushups">Pushups</option>
-                        <option value="ABS">ABS</option>
-                    </select>
+            <div className="container mt-4 ml-5" style={{width: 350}}>
+                <div className="list-group-item">
+                    <label>Which activity did you do?</label>
+                    <div>
+                        <select name="type" id="type">
+                            <option value="">Select one</option>
+                            <option value="Pushups">Pushups</option>
+                            <option value="ABS">ABS</option>
+                        </select>
+                    </div>
                 </div>
 
-                <label className="mt-4">How many repetitions did you do?</label>
+                <div className="list-group-item">
+                    <label className="card-title mt-4">How many repetitions did you do?</label>
 
-                <div>
-                    <input type="text" name="reps" id="reps" />
+                    <div>
+                        <input type="text" name="reps" id="reps" />
+                    </div>
                 </div>
 
-                <label className="mt-4">How many time did you work out?</label>
+                <div className="list-group-item">
+                    <label className="mt-4">How many time did you work out?</label>
 
-                <div>
-                    <input type="text" name="totalTime" id="totalTime" />
+                    <div>
+                        <input type="text" name="totalTime" id="totalTime" />
+                    </div>
                 </div>
 
-                <label className="mt-4">How many weight did you use?</label>
+                <div className="list-group-item">
+                    <label className="mt-4">How many weight did you use?</label>
 
-                <div>
-                    <input type="text" name="weight" id="weight" />
+                    <div>
+                        <input type="text" name="weight" id="weight" />
+                    </div>
                 </div>
+
                 <button
-                    className="mt-4"
+                    className="mt-4 btn btn-primary"
                     onClick={this.saveActivity.bind(this)}>
                     Save
                 </button>
