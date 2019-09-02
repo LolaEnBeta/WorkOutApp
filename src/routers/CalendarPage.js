@@ -21,6 +21,10 @@ class CalendarPage extends React.Component {
               <Calendar
                 onChange={onChange.bind(this)}
                 value={this.state.date}/>
+              <button
+                className="mt-4 btn btn-primary">
+                Add new activity
+              </button>
             </div>
         )
     }
