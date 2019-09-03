@@ -1,5 +1,6 @@
 from flask import Flask, request, abort, make_response
 import sqlite3
+from activity import Activity
 
 app = Flask(__name__)
 
@@ -9,18 +10,22 @@ def index():
 
 @app.route('/activities', methods=["POST"])
 def create_activity():
-    if not "type" in request.json or not "reps" in request.json or not "id" in request.json:
+    if not "type" in request.json or not "reps" in request.json or not "id_act" in request.json:
         abort(400)
 
     type = request.json.get("type")
     reps = request.json.get("reps")
-    id = request.json.get("id")
+    id_act = request.json.get("id_act")
+    totalTime = request.json.get("totalTime", "")
+    weight = request.json.get("weight", "")
 
     try:
         reps = int(reps)
-        id = int(id)
+        id_act = int(id_act)
     except:
         return abort(400)
+
+    activity = Activity(type, reps, id_act, totalTime, weight)
 
 @app.errorhandler(400)
 def bad_request(error):

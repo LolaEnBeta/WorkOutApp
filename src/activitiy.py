@@ -1,8 +1,8 @@
 class Activity(object):
-    def __init__(self, type, reps, id, totalTime, weight):
+    def __init__(self, type, reps, id_act, totalTime, weight):
         self.type = type
         self.reps = reps
-        self.id = id
+        self.id_act = id_act
         self.totalTime = totalTime
         self.weight = weight
 
@@ -10,7 +10,7 @@ class Activity(object):
         return {
             "type": self.type,
             "reps": self.reps,
-            "id": self.id,
+            "id_act": self.id_act,
             "totalTime": self.totalTime,
             "weight": self.weight
         }
