@@ -9,6 +9,8 @@ def index():
 
 @app.route('/activities', methods=["POST"])
 def create_activity():
+    if not "type" in request.json or not "reps" in request.json or not "id" in request.json:
+        abort(400)
     return
 
 if __name__ == "__main__":
