@@ -11,7 +11,16 @@ def index():
 def create_activity():
     if not "type" in request.json or not "reps" in request.json or not "id" in request.json:
         abort(400)
-    return
+
+    type = request.json.get("type")
+    reps = request.json.get("reps")
+    id = request.json.get("id")
+
+    try:
+        reps = int(reps)
+        id = int(id)
+    except:
+        return abort(400)
 
 @app.errorhandler(400)
 def bad_request(error):
