@@ -38,6 +38,14 @@ def get_all():
 
     return jsonify(activities)
 
+@app.route('/activities/<id>', methods=["GET"])
+def get_by(id):
+    activity = ActivityRepository.get_by(id)
+    if not activity:
+        return "Not found"
+
+    return jsonify(activity.to_json())
+
 @app.errorhandler(400)
 def bad_request(error):
     return make_response("bad request", 400)
