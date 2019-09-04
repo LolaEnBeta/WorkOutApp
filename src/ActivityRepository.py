@@ -25,3 +25,24 @@ def create(activity):
         return "Activity created successfully"
     else:
         return "An error has ocurred"
+
+def get_all():
+    conn = sqlite3.connect("sqlite3/database.db")
+    query = conn.cursor()
+
+    sql = 'SELECT * FROM activities'
+
+    if (query.execute(sql)):
+        rows = query.fetchall()
+        activities =[]
+
+        for row in rows:
+            activity = Activity(row[1],row[2],row[3],row[4],row[5])
+            activities.append(activity)
+
+        query.close()
+        conn.commit()
+        conn.close()
+        return activities
+    else:
+        return "An error has ocurred"
