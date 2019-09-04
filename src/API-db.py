@@ -42,13 +42,17 @@ def get_all():
 def get_by(id):
     activity = ActivityRepository.get_by(id)
     if not activity:
-        return "Not found"
+        abort(404)
 
     return jsonify(activity.to_json())
 
 @app.errorhandler(400)
 def bad_request(error):
     return make_response("bad request", 400)
+
+@app.errorhandler(404)
+def not_found(error):
+    return make_response("not found", 404)
 
 if __name__ == "__main__":
     app.run(debug=True)
