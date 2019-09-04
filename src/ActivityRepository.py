@@ -66,3 +66,14 @@ def get_by(id_act):
         return activity
     else:
         return "An error has ocurred"
+
+def remove(activity):
+    conn = sqlite3.connect("sqlite3/database.db")
+    query = conn.cursor()
+
+    sql = 'DELETE FROM activities WHERE id_act = %s' % activity.id_act
+
+    if (query.execute(sql)):
+        query.close()
+        conn.commit()
+        conn.close()
