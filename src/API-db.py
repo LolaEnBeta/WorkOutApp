@@ -31,6 +31,13 @@ def create_activity():
 
     return result
 
+@app.route('/activities', methods=["GET"])
+def get_all():
+    activity_list = ActivityRepository.get_all()
+    activities = [activity.to_json() for activity in activity_list]
+
+    return jsonify(activities)
+
 @app.errorhandler(400)
 def bad_request(error):
     return make_response("bad request", 400)
