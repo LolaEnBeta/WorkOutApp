@@ -1,7 +1,7 @@
 import sqlite3
 from activity import Activity
 
-def crate_activity(activity):
+def create(activity):
     conn = sqlite3.connect("sqlite3/database.db")
     query = conn.cursor()
 
