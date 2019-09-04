@@ -46,3 +46,23 @@ def get_all():
         return activities
     else:
         return "An error has ocurred"
+
+def get_by(id_act):
+    conn = sqlite3.connect("sqlite3/database.db")
+    query = conn.cursor()
+
+    sql = 'SELECT * FROM activities WHERE id_act = %s' % id_act
+
+    if (query.execute(sql)):
+        row = query.fetchone()
+        if not row:
+            return None
+
+        activity = Activity(row[1],row[2],row[3],row[4],row[5])
+
+        query.close()
+        conn.commit()
+        conn.close()
+        return activity
+    else:
+        return "An error has ocurred"
