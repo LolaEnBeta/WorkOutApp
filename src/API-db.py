@@ -52,9 +52,11 @@ def remove(id):
     if not activity:
         abort(404)
 
-    activity_to_remove = ActivityRepository.remove(activity)
-
-    return "Activity deleted"
+    try:
+        ActivityRepository.remove(activity)
+        return "activity deleted"
+    except:
+        return "internal error"
 
 @app.errorhandler(400)
 def bad_request(error):
