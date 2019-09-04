@@ -46,6 +46,16 @@ def get_by(id):
 
     return jsonify(activity.to_json())
 
+@app.route('/activities/<id>', methods=["DELETE"])
+def remove(id):
+    activity = ActivityRepository.get_by(id)
+    if not activity:
+        abort(404)
+
+    activity_to_remove = ActivityRepository.remove(activity)
+
+    return "Activity deleted"
+
 @app.errorhandler(400)
 def bad_request(error):
     return make_response("bad request", 400)
