@@ -77,3 +77,26 @@ def remove(activity):
         query.close()
         conn.commit()
         conn.close()
+
+def edit(activity):
+    conn = sqlite3.connect("sqlite3/database.db")
+    query = conn.cursor()
+
+    arguments = (
+        activity.type,
+        activity.reps,
+        activity.totalTime,
+        activity.weight,
+        activity.id_act
+    )
+
+    sql = '''
+        UPDATE activities SET
+        type = ?, reps = ?, totalTime = ?, weight = ?
+        WHERE id_act = ?
+    '''
+
+    if (query.execute(sql, arguments)):
+        query.close()
+        conn.commit()
+        conn.close()
