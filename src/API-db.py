@@ -47,7 +47,7 @@ def get_by(id):
     return jsonify(activity.to_json())
 
 @app.route('/activities/<id>', methods=["DELETE"])
-def remove(id):
+def remove_by(id):
     activity = ActivityRepository.get_by(id)
     if not activity:
         abort(404)
@@ -55,6 +55,29 @@ def remove(id):
     try:
         ActivityRepository.remove(activity)
         return "activity deleted"
+    except:
+        abort(500)
+
+@app.route('/activities/<id>', methods=["PUT"])
+def modify_by(id):
+    if "id_act" in request.json:
+        return make_response(jsonify("can't modify this"), 400)
+
+    activity = ActivityRepository.get_by(id)
+    if not activity:
+        abort(404)
+
+    try:
+        activity.type = request.json.get("type", activity.type)
+        activity.reps = int(request.json.get("reps", activity.reps))
+        activity.totalTime = int(request.json.get("totalTime", activity.totalTime))
+        activity.weight = int(request.json.get("weight", activity.weight))
+    except:
+        abort(400)
+
+    try:
+        ActivityRepository.edit(activity)
+        return jsonify(activity.to_json())
     except:
         abort(500)
 
