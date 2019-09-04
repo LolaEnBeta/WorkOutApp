@@ -1,6 +1,7 @@
-from flask import Flask, request, abort, make_response
+from flask import Flask, request, abort, make_response, jsonify
 import sqlite3
 from activity import Activity
+import ActivityRepository
 
 app = Flask(__name__)
 
@@ -16,16 +17,19 @@ def create_activity():
     type = request.json.get("type")
     reps = request.json.get("reps")
     id_act = request.json.get("id_act")
-    totalTime = request.json.get("totalTime", "")
-    weight = request.json.get("weight", "")
+    totalTime = request.json.get("totalTime", 0)
+    weight = request.json.get("weight", 0)
 
     try:
         reps = int(reps)
         id_act = int(id_act)
     except:
-        return abort(400)
+        return make_response(jsonify("It is not a number"), 400)
 
-    activity = Activity(type, reps, id_act, totalTime, weight)
+    new_activity = Activity(type, reps, id_act, totalTime, weight)
+    result = ActivityRepository.create(new_activity)
+
+    return result
 
 @app.errorhandler(400)
 def bad_request(error):
