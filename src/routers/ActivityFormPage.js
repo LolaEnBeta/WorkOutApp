@@ -43,19 +43,21 @@ class ActivityFormPage extends React.Component {
         return (
             <div className="container">
                 <ActivityForm onActivityCreated={createActivity.bind(this)}/>
-                {this.state.activities.map(activity => {
-                    return (
-                    <Activity
-                        onActivityDeleted={removeActivity.bind(this)}
-                        key={activity.id}
-                        type={activity.type}
-                        reps={activity.reps}
-                        totalTime={activity.totalTime}
-                        weight={activity.weight}
-                        id={activity.id}
-                    />
-                    );}
-                )}
+                <div>
+                    {this.state.activities.map(activity => {
+                        return (
+                        <Activity
+                            onActivityDeleted={removeActivity.bind(this)}
+                            key={activity.id}
+                            type={activity.type}
+                            reps={activity.reps}
+                            totalTime={activity.totalTime}
+                            weight={activity.weight}
+                            id={activity.id}
+                        />
+                        );}
+                    )}
+                </div>
             </div>
         )
     }
