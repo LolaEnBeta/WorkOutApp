@@ -1,6 +1,7 @@
 import React from 'react';
 import ActivityForm from '../components/ActivityForm';
 import Activity from '../components/Activity';
+import axios from 'axios';
 
 class ActivityFormPage extends React.Component {
     constructor() {
@@ -8,6 +9,13 @@ class ActivityFormPage extends React.Component {
         this.state = {
           activities: [],
         }
+    }
+    componentDidMount() {
+        axios.get('http://127.0.0.1:5000/activities')
+          .then(res => {
+            const activities = res.data;
+            this.setState({ activities })
+        });
     }
 
     render() {
@@ -45,7 +53,6 @@ class ActivityFormPage extends React.Component {
                         totalTime={activity.totalTime}
                         weight={activity.weight}
                         id={activity.id}
-                        date={this.state.date}
                     />
                     );}
                 )}
