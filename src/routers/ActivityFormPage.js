@@ -37,9 +37,9 @@ class ActivityFormPage extends React.Component {
           });
           if (response.status === 200) {
             response = await axios.get('http://127.0.0.1:5000/activities')
+            const activities = response.data;
+            this.setState({ activities });
           }
-          const activities = response.data;
-          this.setState({ activities });
         }
 
         return (
