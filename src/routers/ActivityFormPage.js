@@ -29,19 +29,17 @@ class ActivityFormPage extends React.Component {
         }
 
 
-        const removeActivity = id => {
-          axios ({
+        async function removeActivity(id) {
+          let response = await axios ({
               method: 'DELETE',
               header: "Content-Type: application/json",
               url: 'http://127.0.0.1:5000/activities/' + id,
-          }).then(response => {
-              if (response.status === 200) {
-                return axios.get('http://127.0.0.1:5000/activities')
-              }
-          }).then(res => {
-              const activities = res.data;
-              this.setState({ activities })
           });
+          if (response.status === 200) {
+            response = await axios.get('http://127.0.0.1:5000/activities')
+          }
+          const activities = response.data;
+          this.setState({ activities });
         }
 
         return (
