@@ -36,13 +36,12 @@ class ActivityFormPage extends React.Component {
               url: 'http://127.0.0.1:5000/activities/' + id,
           }).then(response => {
               if (response.status === 200) {
-                axios.get('http://127.0.0.1:5000/activities')
-                  .then(res => {
-                    const activities = res.data;
-                    this.setState({ activities })
-                });
+                return axios.get('http://127.0.0.1:5000/activities')
               }
-          })
+          }).then(res => {
+              const activities = res.data;
+              this.setState({ activities })
+          });
         }
 
         return (
