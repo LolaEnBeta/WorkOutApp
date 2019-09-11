@@ -27,22 +27,29 @@ class ActivityFormPage extends React.Component {
               activities: activities,
             })
         }
+
+
         const removeActivity = id => {
-            let activityIndex = this.state.activities.map(activity => {
-              return activity.id
-            }).indexOf(id);
-
-            let activities = this.state.activities;
-            activities.splice(activityIndex, 1);
-
-            this.setState({
-              activities: activities
-            });
-          }
+          axios ({
+              method: 'DELETE',
+              header: "Content-Type: application/json",
+              url: 'http://127.0.0.1:5000/activities/' + id,
+          }).then(response => {
+              if (response.status === 200) {
+                axios.get('http://127.0.0.1:5000/activities')
+                  .then(res => {
+                    const activities = res.data;
+                    this.setState({ activities })
+                });
+              }
+          })
+        }
 
         return (
             <div className="container">
-                <ActivityForm onActivityCreated={createActivity.bind(this)}/>
+                <ActivityForm
+                // onActivityCreated={createActivity.bind(this)}
+                />
                 <div>
                     {this.state.activities.map(activity => {
                         return (
@@ -59,7 +66,7 @@ class ActivityFormPage extends React.Component {
                     )}
                 </div>
             </div>
-        )
+        );
     }
 }
 
