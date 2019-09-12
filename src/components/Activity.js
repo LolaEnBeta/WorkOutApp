@@ -30,6 +30,10 @@ class Activity extends React.Component {
                     onClick={this.deleteActivity.bind(this)}>
                     Delete
                 </button>
+                <button
+                    className="btn btn-danger">
+                    Modify
+                </button>
             </div>
         );
     }
