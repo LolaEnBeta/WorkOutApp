@@ -7,6 +7,7 @@ class CalendarPage extends React.Component {
     super();
     this.state = {
       date: new Date(),
+      currentDay: this.formatDate(new Date()),
     }
   }
 
@@ -14,6 +15,7 @@ class CalendarPage extends React.Component {
     const onChange = date => {
       this.setState({
         date: date,
+        currentDay: this.formatDate(date)
       });
     }
 
@@ -25,12 +27,28 @@ class CalendarPage extends React.Component {
         />
         <Link
           className="btn btn-secondary mr-3"
-          to={"/day?day="}
+          to={"/day?day=" + this.state.currentDay}
         >
           See activities
         </Link>
       </div>
     )
+  }
+
+  formatDate(date) {
+    let day = date;
+    let dd = "" + day.getDate();
+    let mm = "" + (day.getMonth() + 1);
+    let yyyy = day.getFullYear();
+
+    if (dd.length < 2) {
+      dd = "0" + dd;
+    }
+    if (mm.length < 2) {
+      mm = "0" + mm;
+    }
+
+    return yyyy+"-"+mm+"-"+dd;
   }
 }
 
