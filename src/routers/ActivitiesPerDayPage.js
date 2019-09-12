@@ -8,14 +8,14 @@ const demoData = {
             "reps": 2,
             "totalTime": 10,
             "weight": 0,
-
+            "id": 1
         },
         {
             "type": "salt",
             "reps": 200,
             "totalTime": 50,
             "weight": 0,
-
+            "id": 2
         }
     ],
     "2019-08-26": [
@@ -24,14 +24,14 @@ const demoData = {
             "reps": 30,
             "totalTime": 0,
             "weight": 0,
-
+            "id": 3
         },
         {
             "type": "sqd",
             "reps": 10,
             "totalTime": 20,
             "weight": 0,
-
+            "id": 4
         }
     ],
     "2019-04-23": [
@@ -40,34 +40,34 @@ const demoData = {
             "reps": 2,
             "totalTime": 0,
             "weight": 10,
-
+            "id": 5
         },
         {
             "type": "tri",
             "reps": 20,
             "totalTime": 0,
             "weight": 0,
-
+            "id": 6
         },
         {
             "type": "salt",
             "reps": 200,
             "totalTime": 50,
             "weight": 0,
-
+            "id": 7
         },
         {
             "type": "sqd",
             "reps": 10,
             "totalTime": 20,
             "weight": 0,
-
+            "id": 8
         },{
             "type": "sqd",
             "reps": 10,
             "totalTime": 20,
             "weight": 0,
-
+            "id": 9
         }
     ]
 };
@@ -87,20 +87,24 @@ class ActivitiesPerDayPage extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <div> DAY: {this.state.date} </div>
+                <button
+                    className="btn btn-secondary mr-3 mt-4">
+                    Create new activity
+                </button>
                 <div className="">
                     <div className="card-columns">
                         {this.state.activities.map(activity => {
                             return (
                                 <Activity
                                     // onActivityDeleted={removeActivity.bind(this)}
-                                    // key={activity.type}
+                                    key={activity.id}
                                     type={activity.type}
                                     reps={activity.reps}
                                     totalTime={activity.totalTime}
                                     weight={activity.weight}
-                                    // id={activity.id}
+                                    id={activity.id}
                                 />
                             );
                         })}
