@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class ActivityForm extends React.Component {
     constructor() {
@@ -60,30 +61,32 @@ class ActivityForm extends React.Component {
         const totalTimeInput = document.getElementById("totalTime");
         const weightInput = document.getElementById("weight");
 
-        if (typeInput.value === "" || repsInput.value === "") {
-            alert("You need to specify the activity and reps!");
-        } else {
-            let counterId = this.state.counterId + 1
-
-            this.setState({
-                counterId: counterId,
-            })
-
-            let newActivity = {
-                type: typeInput.value,
-                reps: repsInput.value,
-                totalTime: totalTimeInput.value,
-                weight: weightInput.value,
-                id: this.state.counterId,
-            }
-
-            typeInput.value = "";
-            repsInput.value = "";
-            totalTimeInput.value = "";
-            weightInput.value = "";
-
-            this.props.onActivityCreated(newActivity);
+        let newActivity = {
+            type: typeInput.value,
+            reps: repsInput.value,
+            totalTime: totalTimeInput.value || 0,
+            weight: weightInput.value || 0,
+            id: this.state.counterId,
         }
+
+        axios({
+            method: 'POST',
+            header: "Content-Type: application/json",
+            url: 'http://127.0.0.1:5000/activities',
+            data: {
+              "type": newActivity.type,
+              "reps": newActivity.reps,
+              "totalTime": newActivity.totalTime,
+              "weight": newActivity.weight
+            }
+        })
+
+        typeInput.value = "";
+        repsInput.value = "";
+        totalTimeInput.value = "";
+        weightInput.value = "";
+
+        // this.props.onActivityCreated.bind(this);
     }
 }
 
