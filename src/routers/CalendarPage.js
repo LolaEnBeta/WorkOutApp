@@ -48,7 +48,7 @@ class CalendarPage extends React.Component {
       mm = "0" + mm;
     }
 
-    return yyyy+"-"+mm+"-"+dd;
+    return yyyy+"/"+mm+"/"+dd;
   }
 }
 
