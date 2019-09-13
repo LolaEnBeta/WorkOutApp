@@ -1,8 +1,9 @@
 import React from 'react';
 import Activity from '../components/Activity';
+import axios from 'axios';
 
 const demoData = {
-    "2019-09-12": [
+    "2019/09/12": [
         {
             "type": "abs",
             "reps": 2,
@@ -18,7 +19,7 @@ const demoData = {
             "id": 2
         }
     ],
-    "2019-08-26": [
+    "2019/08/26": [
         {
             "type": "abs",
             "reps": 30,
@@ -34,7 +35,7 @@ const demoData = {
             "id": 4
         }
     ],
-    "2019-04-23": [
+    "2019/04/23": [
         {
             "type": "push",
             "reps": 2,
@@ -77,12 +78,19 @@ class ActivitiesPerDayPage extends React.Component {
         super();
         const params = new URLSearchParams(location.search);
         let day = params.get('day')
-        let activitiesList = demoData[day]
+        // let activitiesList = demoData[day]
 
         this.state = {
             date: day,
-            activities: activitiesList,
+            activities: [],
         }
+    }
+    componentDidMount() {
+        axios.get('http://127.0.0.1:5000/activities')
+          .then(res => {
+            const activities = res.data;
+            this.setState({ activities })
+        });
     }
 
     render() {
@@ -93,22 +101,20 @@ class ActivitiesPerDayPage extends React.Component {
                     className="btn btn-secondary mr-3 mt-4">
                     Create new activity
                 </button>
-                <div className="">
-                    <div className="card-columns">
-                        {this.state.activities.map(activity => {
-                            return (
-                                <Activity
-                                    // onActivityDeleted={removeActivity.bind(this)}
-                                    key={activity.id}
-                                    type={activity.type}
-                                    reps={activity.reps}
-                                    totalTime={activity.totalTime}
-                                    weight={activity.weight}
-                                    id={activity.id}
-                                />
-                            );
-                        })}
-                    </div>
+                <div className="card-columns">
+                    {this.state.activities.map(activity => {
+                        return (
+                            <Activity
+                                // onActivityDeleted={removeActivity.bind(this)}
+                                key={activity.id}
+                                type={activity.type}
+                                reps={activity.reps}
+                                totalTime={activity.totalTime}
+                                weight={activity.weight}
+                                id={activity.id}
+                            />
+                        );
+                    })}
                 </div>
             </div>
         );
