@@ -86,7 +86,11 @@ class ActivitiesPerDayPage extends React.Component {
         }
     }
     componentDidMount() {
-        axios.get('http://127.0.0.1:5000/activities')
+        axios.get('http://127.0.0.1:5000/activities', {
+            params: {
+                day: this.state.date,
+            }
+        })
           .then(res => {
             const activities = res.data;
             this.setState({ activities })
