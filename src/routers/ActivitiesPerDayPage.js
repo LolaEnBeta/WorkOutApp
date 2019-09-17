@@ -4,7 +4,7 @@ import axios from 'axios';
 import Activity from '../components/Activity';
 
 class ActivitiesPerDayPage extends React.Component {
-    constructor({ match, location }) {
+    constructor({ location }) {
         super();
         const params = new URLSearchParams(location.search);
         let day = params.get('day')
@@ -48,7 +48,7 @@ class ActivitiesPerDayPage extends React.Component {
                 <div> DAY: {this.state.date} </div>
                 <Link
                     className="btn btn-secondary mr-3"
-                    to={"/activityform"}>
+                    to={"/activityform?day=" + this.state.date} >
                         Create new activity
                 </Link>
                 <div className="card-columns">
