@@ -3,13 +3,14 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom'
 
 class ActivityForm extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             type: '',
             reps: '',
             totalTime: '',
-            weight: ''
+            weight: '',
+            date: this.props.date,
         }
     }
 
@@ -21,6 +22,7 @@ class ActivityForm extends React.Component {
             reps: this.state.reps,
             totalTime: this.state.totalTime,
             weight: this.state.weight,
+            date: this.state.date,
         }
 
         axios({
@@ -32,9 +34,9 @@ class ActivityForm extends React.Component {
               "reps": newActivity.reps,
               "totalTime": newActivity.totalTime,
               "weight": newActivity.weight,
-              "date": "2019/09/16"
+              "date": newActivity.date,
             }
-        }).then (() => this.props.history.push('/day'))
+        }).then (() => this.props.history.push('/day?day=' + this.state.date))
     }
 
     changeStateValues ({name, value}) {
