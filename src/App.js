@@ -27,13 +27,13 @@ class App extends React.Component {
           <nav className="navbar navbar-light bg-light">
             <ul>
               <Link className="btn btn-secondary mr-3" to="/">Home</Link>
-              <Link className="btn btn-secondary mr-3" to="/form/">Form</Link>
+              <Link className="btn btn-secondary mr-3" to="/activityform">Form</Link>
             </ul>
           </nav>
 
           <div>
             <Route exact path="/" component={Home} />
-            <Route path="/form/" component={FormPage} />
+            <Route path="/activityform" component={FormPage} />
             <Route path="/day" component={ActivitiesPerDayPage} />
             <Route path="/activities" component={Activities} />
 
