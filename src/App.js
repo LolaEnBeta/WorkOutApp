@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CalendarPage from './routers/CalendarPage';
 import ActivityFormPage from './routers/ActivityFormPage';
 import ActivitiesPerDayPage from './routers/ActivitiesPerDayPage';
+import Activities from './routers/Activities';
 
 function FormPage() {
 return(<ActivityFormPage />)
@@ -34,6 +35,8 @@ class App extends React.Component {
             <Route exact path="/" component={Home} />
             <Route path="/form/" component={FormPage} />
             <Route path="/day" component={ActivitiesPerDayPage} />
+            <Route path="/activities" component={Activities} />
+
           </div>
         </div>
       </Router>
