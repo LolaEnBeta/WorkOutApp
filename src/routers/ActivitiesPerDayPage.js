@@ -35,9 +35,12 @@ class ActivitiesPerDayPage extends React.Component {
                 header: "Content-Type: application/json",
                 url: 'http://127.0.0.1:5000/activities/' + id,
             });
-
             if (response.status === 200) {
-                response = await axios.get('http://127.0.0.1:5000/activities')
+                response = await axios.get('http://127.0.0.1:5000/activities', {
+                    params: {
+                        day: this.state.date,
+                    }
+                });
                 const activities = response.data;
                 this.setState({ activities });
             }
