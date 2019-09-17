@@ -33,7 +33,7 @@ class App extends React.Component {
 
           <div>
             <Route exact path="/" component={Home} />
-            <Route path="/activityform" component={FormPage} />
+            <Route path="/activityform" component={ActivityFormPage} />
             <Route path="/day" component={ActivitiesPerDayPage} />
             <Route path="/activities" component={Activities} />
 
