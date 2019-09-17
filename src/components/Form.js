@@ -4,16 +4,27 @@ class Form extends React.Component {
     constructor() {
         super();
         this.state = {
-            value: "hola"
+            type: '',
+            reps: '',
+            totalTime: '',
+            weight: ''
         }
     }
+
+    changeStateValues ({name, value}) {
+        this.setState({
+          [name]: value
+        })
+    };
 
     render() {
         return(
             <form>
                 <label>
                     Which activity did you do?
-                    <select name="type" id="type">
+                    <select
+                        name="type"
+                        onChange={event => this.changeStateValues(event.target)}>
                         <option value="">Select one</option>
                         <option value="Pushups">Pushups</option>
                         <option value="ABS">ABS</option>
@@ -22,21 +33,28 @@ class Form extends React.Component {
 
                 <label>
                     How many repetitions did you do?
-                    <input type="text" name="reps" id="reps" />
+                    <input
+                        type="text"
+                        name="reps"
+                        onChange={event => this.changeStateValues(event.target)}/>
                 </label>
 
                 <label>
                         How many time did you work out?
-                        <input type="text" name="totalTime" id="totalTime" />
+                        <input
+                            type="text"
+                            name="totalTime"
+                            onChange={event => this.changeStateValues(event.target)}/>
                 </label>
 
                 <label>
                     How many weight did you use?
-                    <input type="text" name="weight" id="weight" />
+                    <input
+                        type="text"
+                        name="weight"
+                        onChange={event => this.changeStateValues(event.target)}/>
                 </label>
-                <div>
-                    <input type="submit" value="Add" />
-                </div>
+                <input type="submit" value="ADD" />
             </form>
         );
     }
