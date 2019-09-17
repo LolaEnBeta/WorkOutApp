@@ -11,6 +11,10 @@ class Form extends React.Component {
         }
     }
 
+    addActivity() {
+
+    }
+
     changeStateValues ({name, value}) {
         this.setState({
           [name]: value
@@ -19,7 +23,9 @@ class Form extends React.Component {
 
     render() {
         return(
-            <form>
+            <form
+                onSubmit={this.addActivity.bind(this)}>
+
                 <label>
                     Which activity did you do?
                     <select
