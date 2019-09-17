@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom'
 
 class Form extends React.Component {
     constructor() {
@@ -11,7 +12,8 @@ class Form extends React.Component {
         }
     }
 
-    addActivity() {
+    addActivity(e) {
+        e.preventDefault();
 
         let newActivity = {
             type: this.state.type,
@@ -31,7 +33,7 @@ class Form extends React.Component {
               "weight": newActivity.weight,
               "date": "2019/09/16"
             }
-        });
+        }).then (() => this.props.history.push('/activities'))
     }
 
     changeStateValues ({name, value}) {
@@ -85,4 +87,4 @@ class Form extends React.Component {
     }
 }
 
-export default Form;
+export default withRouter(Form);
