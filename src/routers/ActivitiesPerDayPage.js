@@ -1,6 +1,6 @@
 import React from 'react';
-import Activity from '../components/Activity';
 import axios from 'axios';
+import Activity from '../components/Activity';
 
 class ActivitiesPerDayPage extends React.Component {
     constructor({ match, location }) {
@@ -27,18 +27,30 @@ class ActivitiesPerDayPage extends React.Component {
     }
 
     render() {
+
+        async function removeActivity(id) {
+            let response = await axios ({
+                method: 'DELETE',
+                header: "Content-Type: application/json",
+                url: 'http://127.0.0.1:5000/activities/' + id,
+            });
+
+            if (response.status === 200) {
+                response = await axios.get('http://127.0.0.1:5000/activities')
+                const activities = response.data;
+                this.setState({ activities });
+            }
+        }
+
         return (
             <div className="container">
                 <div> DAY: {this.state.date} </div>
-                <button
-                    className="btn btn-secondary mr-3 mt-4">
-                    Create new activity
-                </button>
+
                 <div className="card-columns">
                     {this.state.activities.map(activity => {
                         return (
                             <Activity
-                                // onActivityDeleted={removeActivity.bind(this)}
+                                onActivityDeleted={removeActivity.bind(this)}
                                 key={activity.id}
                                 type={activity.type}
                                 reps={activity.reps}
