@@ -1,72 +1,26 @@
 import React from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom'
 
 class ActivityForm extends React.Component {
     constructor() {
         super();
         this.state = {
-            counterId: 0,
+            type: '',
+            reps: '',
+            totalTime: '',
+            weight: ''
         }
     }
-    render() {
-        return (
-            <div className="container mt-4 ml-5" style={{width: 350}}>
-                <div className="list-group-item">
-                    <label>Which activity did you do?</label>
-                    <div>
-                        <select name="type" id="type">
-                            <option value="">Select one</option>
-                            <option value="Pushups">Pushups</option>
-                            <option value="ABS">ABS</option>
-                        </select>
-                    </div>
-                </div>
 
-                <div className="list-group-item">
-                    <label className="card-title mt-4">How many repetitions did you do?</label>
-
-                    <div>
-                        <input type="text" name="reps" id="reps" />
-                    </div>
-                </div>
-
-                <div className="list-group-item">
-                    <label className="mt-4">How many time did you work out?</label>
-
-                    <div>
-                        <input type="text" name="totalTime" id="totalTime" />
-                    </div>
-                </div>
-
-                <div className="list-group-item">
-                    <label className="mt-4">How many weight did you use?</label>
-
-                    <div>
-                        <input type="text" name="weight" id="weight" />
-                    </div>
-                </div>
-
-                <button
-                    className="mt-4 btn btn-primary"
-                    onClick={this.saveActivity.bind(this)}>
-                    Save
-                </button>
-            </div>
-        );
-    }
-    saveActivity() {
-
-        const typeInput = document.getElementById("type");
-        const repsInput = document.getElementById("reps");
-        const totalTimeInput = document.getElementById("totalTime");
-        const weightInput = document.getElementById("weight");
+    addActivity(e) {
+        e.preventDefault();
 
         let newActivity = {
-            type: typeInput.value,
-            reps: repsInput.value,
-            totalTime: totalTimeInput.value || 0,
-            weight: weightInput.value || 0,
-            id: this.state.counterId,
+            type: this.state.type,
+            reps: this.state.reps,
+            totalTime: this.state.totalTime,
+            weight: this.state.weight,
         }
 
         axios({
@@ -77,17 +31,61 @@ class ActivityForm extends React.Component {
               "type": newActivity.type,
               "reps": newActivity.reps,
               "totalTime": newActivity.totalTime,
-              "weight": newActivity.weight
+              "weight": newActivity.weight,
+              "date": "2019/09/16"
             }
+        }).then (() => this.props.history.push('/day'))
+    }
+
+    changeStateValues ({name, value}) {
+        this.setState({
+          [name]: value
         })
+    };
 
-        typeInput.value = "";
-        repsInput.value = "";
-        totalTimeInput.value = "";
-        weightInput.value = "";
+    render() {
+        return(
+            <form
+                onSubmit={this.addActivity.bind(this)}>
 
-        // this.props.onActivityCreated.bind(this);
+                <label>
+                    Which activity did you do?
+                    <select
+                        name="type"
+                        onChange={event => this.changeStateValues(event.target)}>
+                        <option value="">Select one</option>
+                        <option value="Pushups">Pushups</option>
+                        <option value="ABS">ABS</option>
+                    </select>
+                </label>
+
+                <label>
+                    How many repetitions did you do?
+                    <input
+                        type="text"
+                        name="reps"
+                        onChange={event => this.changeStateValues(event.target)}/>
+                </label>
+
+                <label>
+                        How many time did you work out?
+                        <input
+                            type="text"
+                            name="totalTime"
+                            onChange={event => this.changeStateValues(event.target)}/>
+                </label>
+
+                <label>
+                    How many weight did you use?
+                    <input
+                        type="text"
+                        name="weight"
+                        onChange={event => this.changeStateValues(event.target)}/>
+                </label>
+                <input type="submit" value="ADD" />
+            </form>
+        );
     }
 }
 
-export default ActivityForm;
+export default withRouter(ActivityForm);
