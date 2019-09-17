@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../components/Form';
+import ActivityForm from '../components/ActivityForm';
 
 class ActivityFormPage extends React.Component {
   constructor() {
@@ -12,7 +12,7 @@ class ActivityFormPage extends React.Component {
   render() {
     return (
       <div className="container">
-        <Form />
+        <ActivityForm />
       </div>
     );
   }
