@@ -13,6 +13,25 @@ class Form extends React.Component {
 
     addActivity() {
 
+        let newActivity = {
+            type: this.state.type,
+            reps: this.state.reps,
+            totalTime: this.state.totalTime,
+            weight: this.state.weight,
+        }
+
+        axios({
+            method: 'POST',
+            header: "Content-Type: application/json",
+            url: 'http://127.0.0.1:5000/activities',
+            data: {
+              "type": newActivity.type,
+              "reps": newActivity.reps,
+              "totalTime": newActivity.totalTime,
+              "weight": newActivity.weight,
+              "date": "2019/09/16"
+            }
+        });
     }
 
     changeStateValues ({name, value}) {
