@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import Activity from '../components/Activity';
 
@@ -45,7 +46,11 @@ class ActivitiesPerDayPage extends React.Component {
         return (
             <div className="container">
                 <div> DAY: {this.state.date} </div>
-
+                <Link
+                    className="btn btn-secondary mr-3"
+                    to={"/activityform"}>
+                        Create new activity
+                </Link>
                 <div className="card-columns">
                     {this.state.activities.map(activity => {
                         return (
