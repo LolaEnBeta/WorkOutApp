@@ -14,7 +14,7 @@ class ActivityForm extends React.Component {
         }
     };
 
-    addActivity(e) {
+    async addActivity(e) {
         e.preventDefault();
 
         let newActivity = {
@@ -25,13 +25,17 @@ class ActivityForm extends React.Component {
             date: this.state.date,
         }
 
-        axios.post('http://127.0.0.1:5000/activities',{
+        let response = await axios.post('http://127.0.0.1:5000/activities',{
               "type": newActivity.type,
               "reps": newActivity.reps,
               "totalTime": newActivity.totalTime,
               "weight": newActivity.weight,
               "date": newActivity.date,
-            }).then (() => this.props.history.push('/day?day=' + this.state.date))
+        });
+
+        if (response.status === 200) {
+            response = await this.props.history.push('/day?day=' + this.state.date) 
+        }
     };
 
     changeStateValues ({name, value}) {
