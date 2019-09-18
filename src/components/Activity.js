@@ -1,6 +1,12 @@
 import React from 'react';
 
 class Activity extends React.Component {
+
+    deleteActivity() {
+        let activityId = this.props.id;
+        this.props.onActivityDeleted(activityId);
+    }
+
     render() {
         return(
             <div className="card m-5" style={{width: 250}}>
@@ -36,10 +42,6 @@ class Activity extends React.Component {
                 </button>
             </div>
         );
-    }
-    deleteActivity() {
-        let activityId = this.props.id;
-        this.props.onActivityDeleted(activityId);
     }
 }
 

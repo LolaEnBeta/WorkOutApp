@@ -12,7 +12,7 @@ class ActivityForm extends React.Component {
             weight: '',
             date: this.props.date,
         }
-    }
+    };
 
     addActivity(e) {
         e.preventDefault();
@@ -37,7 +37,7 @@ class ActivityForm extends React.Component {
               "date": newActivity.date,
             }
         }).then (() => this.props.history.push('/day?day=' + this.state.date))
-    }
+    };
 
     changeStateValues ({name, value}) {
         this.setState({
@@ -84,6 +84,7 @@ class ActivityForm extends React.Component {
                         name="weight"
                         onChange={event => this.changeStateValues(event.target)}/>
                 </label>
+
                 <input type="submit" value="ADD" />
             </form>
         );

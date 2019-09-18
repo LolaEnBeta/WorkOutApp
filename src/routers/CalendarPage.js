@@ -11,28 +11,11 @@ class CalendarPage extends React.Component {
     }
   }
 
-  render() {
-    const onChange = date => {
-      this.setState({
-        date: date,
-        currentDay: this.formatDate(date)
-      });
-    }
-
-    return (
-      <div className="container mt-5 ml-5">
-        <Calendar
-          onChange={onChange.bind(this)}
-          value={this.state.date}
-        />
-        <Link
-          className="btn btn-secondary mr-3"
-          to={"/day?day=" + this.state.currentDay}
-        >
-          See activities
-        </Link>
-      </div>
-    )
+  onChange = date => {
+    this.setState({
+      date: date,
+      currentDay: this.formatDate(date)
+    });
   }
 
   formatDate(date) {
@@ -49,6 +32,22 @@ class CalendarPage extends React.Component {
     }
 
     return yyyy+"/"+mm+"/"+dd;
+  }
+
+  render() {
+    return (
+      <div className="container mt-5 ml-5">
+        <Calendar
+          onChange={this.onChange.bind(this)}
+          value={this.state.date} />
+
+        <Link
+          className="btn btn-secondary mr-3"
+          to={"/day?day=" + this.state.currentDay} >
+          See activities
+        </Link>
+      </div>
+    );
   }
 }
 

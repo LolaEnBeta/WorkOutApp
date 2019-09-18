@@ -5,10 +5,6 @@ import ActivityFormPage from './routers/ActivityFormPage';
 import ActivitiesPerDayPage from './routers/ActivitiesPerDayPage';
 import Activities from './routers/Activities';
 
-function FormPage() {
-return(<ActivityFormPage />)
-}
-
 function Home() {
   return(<CalendarPage />)
 }
@@ -20,6 +16,7 @@ class App extends React.Component {
       activities: [],
     }
   }
+
   render() {
     return (
       <Router>
@@ -36,7 +33,6 @@ class App extends React.Component {
             <Route path="/activityform" component={ActivityFormPage} />
             <Route path="/day" component={ActivitiesPerDayPage} />
             <Route path="/activities" component={Activities} />
-
           </div>
         </div>
       </Router>
