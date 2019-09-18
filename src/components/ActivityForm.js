@@ -25,18 +25,13 @@ class ActivityForm extends React.Component {
             date: this.state.date,
         }
 
-        axios({
-            method: 'POST',
-            header: "Content-Type: application/json",
-            url: 'http://127.0.0.1:5000/activities',
-            data: {
+        axios.post('http://127.0.0.1:5000/activities',{
               "type": newActivity.type,
               "reps": newActivity.reps,
               "totalTime": newActivity.totalTime,
               "weight": newActivity.weight,
               "date": newActivity.date,
-            }
-        }).then (() => this.props.history.push('/day?day=' + this.state.date))
+            }).then (() => this.props.history.push('/day?day=' + this.state.date))
     };
 
     changeStateValues ({name, value}) {
