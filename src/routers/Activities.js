@@ -34,6 +34,12 @@ class Activities extends React.Component {
     render() {
         return (
             <div className="container">
+                <select
+                    name="type">
+                    <option value="">Select one</option>
+                    <option value="Pushups">Pushups</option>
+                    <option value="ABS">ABS</option>
+                </select>
                 {this.state.activities.map(activity => {
                     return (
                         <Activity
