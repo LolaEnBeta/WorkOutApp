@@ -24,7 +24,7 @@ class App extends React.Component {
           <nav className="navbar navbar-light bg-light">
             <ul>
               <Link className="btn btn-secondary mr-3" to="/">Home</Link>
-              <Link className="btn btn-secondary mr-3" to="/activityform">Form</Link>
+              <Link className="btn btn-secondary mr-3" to="/activities">Activities</Link>
             </ul>
           </nav>
 
