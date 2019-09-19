@@ -60,6 +60,7 @@ class ModifyForm extends React.Component {
                     Which activity did you do?
                     <select
                         name="type"
+                        value={this.state.type}
                         onChange={event => this.changeStateValues(event.target)}>
                         <option value="">Select one</option>
                         <option value="Pushups">Pushups</option>
@@ -81,6 +82,7 @@ class ModifyForm extends React.Component {
                         <input
                             type="text"
                             name="totalTime"
+                            value={this.state.totalTime}
                             onChange={event => this.changeStateValues(event.target)}/>
                 </label>
 
@@ -89,6 +91,7 @@ class ModifyForm extends React.Component {
                     <input
                         type="text"
                         name="weight"
+                        value={this.state.weight}
                         onChange={event => this.changeStateValues(event.target)}/>
                 </label>
 
