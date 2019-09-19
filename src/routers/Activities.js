@@ -11,20 +11,6 @@ class Activities extends React.Component {
         }
     }
 
-    componentDidMount() {
-        if (this.state.type) {
-            axios.get('http://127.0.0.1:5000/type', {
-                params: {
-                    type: this.state.type
-                }
-            })
-            .then(res => {
-                const activities = res.data;
-                this.setState({ activities })
-            });
-        }
-    }
-
     async removeActivity(id) {
         let response = await axios.delete('http://127.0.0.1:5000/activities/' + id);
 
