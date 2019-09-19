@@ -15,14 +15,17 @@ class ActivitiesPerTypePage extends React.Component {
         let response = await axios.delete('http://127.0.0.1:5000/activities/' + id);
 
         if (response.status === 200) {
-            response = await axios.get('http://127.0.0.1:5000/activities')
+            response = await axios.get('http://127.0.0.1:5000/type', {
+                params: {
+                    type: this.state.type
+                }
+            })
             const activities = response.data;
             this.setState({ activities });
         }
     }
 
-    changeStateValues ({name, value}) {
-
+    changeStateValues ({value}) {
         axios.get('http://127.0.0.1:5000/type', {
             params: {
                 type: value
@@ -30,7 +33,10 @@ class ActivitiesPerTypePage extends React.Component {
         })
         .then(res => {
             const activities = res.data;
-            this.setState({ activities })
+            this.setState({
+                activities: activities,
+                type: value
+            })
         });
     };
 
