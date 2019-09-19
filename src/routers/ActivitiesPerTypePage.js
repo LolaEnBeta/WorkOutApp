@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Activity from '../components/Activity';
 
-class Activities extends React.Component {
+class ActivitiesPerTypePage extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -64,4 +64,4 @@ class Activities extends React.Component {
     }
 }
 
-export default Activities;
+export default ActivitiesPerTypePage;
