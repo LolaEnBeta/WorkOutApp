@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 class Activity extends React.Component {
 
@@ -38,7 +39,11 @@ class Activity extends React.Component {
                 </button>
                 <button
                     className="btn btn-danger">
-                    Modify
+                    <Link
+                        to={"/modifyform?id =" + this.props.id + "&type=" + this.props.type + "&reps=" + this.props.reps + "&totalTime=" + this.props.totalTime + "&weight=" + this.props.weight}
+                        >
+                        Modify
+                    </Link>
                 </button>
             </div>
         );
