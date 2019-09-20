@@ -6,10 +6,10 @@ class ActivityForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            type: '',
-            reps: '',
-            totalTime: '',
-            weight: '',
+            type: null,
+            reps: null,
+            totalTime: 0,
+            weight: 0,
             date: this.props.date,
         }
     };
@@ -23,6 +23,10 @@ class ActivityForm extends React.Component {
             totalTime: this.state.totalTime,
             weight: this.state.weight,
             date: this.state.date,
+        }
+
+        if ((newActivity.type === null) || (newActivity.reps === null)) {
+            alert("You need select the activity and put the repetitions you did!!")
         }
 
         let response = await axios.post('http://127.0.0.1:5000/activities',{
@@ -40,52 +44,55 @@ class ActivityForm extends React.Component {
 
     changeStateValues ({name, value}) {
         this.setState({
-          [name]: value
+            [name]: value
         })
     };
 
     render() {
         return(
-            <form
-                onSubmit={this.addActivity.bind(this)}>
+            <div className="container">
 
-                <label>
-                    Which activity did you do?
-                    <select
-                        name="type"
-                        onChange={event => this.changeStateValues(event.target)}>
-                        <option value="">Select one</option>
-                        <option value="Pushups">Pushups</option>
-                        <option value="ABS">ABS</option>
-                    </select>
-                </label>
+                <form
+                    onSubmit={this.addActivity.bind(this)}>
 
-                <label>
-                    How many repetitions did you do?
-                    <input
-                        type="text"
-                        name="reps"
-                        onChange={event => this.changeStateValues(event.target)}/>
-                </label>
+                    <label>
+                        Which activity did you do?
+                        <select
+                            name="type"
+                            onChange={event => this.changeStateValues(event.target)}>
+                            <option value="">Select one</option>
+                            <option value="Pushups">Pushups</option>
+                            <option value="ABS">ABS</option>
+                        </select>
+                    </label>
 
-                <label>
-                        How many time did you work out?
+                    <label>
+                        How many repetitions did you do?
                         <input
                             type="text"
-                            name="totalTime"
+                            name="reps"
                             onChange={event => this.changeStateValues(event.target)}/>
-                </label>
+                    </label>
 
-                <label>
-                    How many weight did you use?
-                    <input
-                        type="text"
-                        name="weight"
-                        onChange={event => this.changeStateValues(event.target)}/>
-                </label>
+                    <label>
+                            How many time did you work out?
+                            <input
+                                type="text"
+                                name="totalTime"
+                                onChange={event => this.changeStateValues(event.target)}/>
+                    </label>
 
-                <input type="submit" value="ADD" />
-            </form>
+                    <label>
+                        How many weight did you use?
+                        <input
+                            type="text"
+                            name="weight"
+                            onChange={event => this.changeStateValues(event.target)}/>
+                    </label>
+
+                    <input type="submit" value="ADD" />
+                </form>
+            </div>
         );
     }
 }
