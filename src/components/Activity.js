@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 class Activity extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: this.props.id,
+        }
+    }
 
     deleteActivity() {
         let activityId = this.props.id;
@@ -40,7 +46,7 @@ class Activity extends React.Component {
                 <button
                     className="btn btn-danger">
                     <Link
-                        to={"/modifyform?id =" + this.props.id + "&type=" + this.props.type + "&reps=" + this.props.reps + "&totalTime=" + this.props.totalTime + "&weight=" + this.props.weight}
+                        to={"/modifyform?id=" + this.state.id + "&type=" + this.props.type + "&reps=" + this.props.reps + "&totalTime=" + this.props.totalTime + "&weight=" + this.props.weight}
                         >
                         Modify
                     </Link>
