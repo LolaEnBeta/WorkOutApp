@@ -21,10 +21,11 @@ class ModifyForm extends React.Component {
         }
     };
 
-    async addActivity(e) {
+    async modifyActivity(e) {
         e.preventDefault();
 
         let newActivity = {
+            id: this.state.id,
             type: this.state.type,
             reps: this.state.reps,
             totalTime: this.state.totalTime,
@@ -32,16 +33,16 @@ class ModifyForm extends React.Component {
             date: this.state.date,
         }
 
-        let response = await axios.post('http://127.0.0.1:5000/activities',{
-              "type": newActivity.type,
-              "reps": newActivity.reps,
-              "totalTime": newActivity.totalTime,
-              "weight": newActivity.weight,
-              "date": newActivity.date,
+        let response = await axios.put('http://127.0.0.1:5000/activities/' + this.state.id, {
+            "id": newActivity.id,
+            "type": newActivity.type,
+            "reps": newActivity.reps,
+            "totalTime": newActivity.totalTime,
+            "weight": newActivity.weight,
         });
 
         if (response.status === 200) {
-            response = await this.props.history.push('/day?day=' + this.state.date) 
+            response = await this.props.history.push('/')
         }
     };
 
@@ -54,7 +55,8 @@ class ModifyForm extends React.Component {
     render() {
         return(
             <form
-                onSubmit={this.addActivity.bind(this)}>
+                className="container"
+                onSubmit={this.modifyActivity.bind(this)}>
 
                 <label>
                     Which activity did you do?
@@ -95,7 +97,7 @@ class ModifyForm extends React.Component {
                         onChange={event => this.changeStateValues(event.target)}/>
                 </label>
 
-                <input type="submit" value="ADD" />
+                <input type="submit" value="MODIFY" />
             </form>
         );
     }
