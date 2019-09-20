@@ -33,6 +33,18 @@ class ModifyForm extends React.Component {
             date: this.state.date,
         }
 
+        if ((newActivity.type === "") || (newActivity.reps === "")) {
+            alert("You need select the activity and put the repetitions you did!!")
+        }
+
+        if (newActivity.totalTime === "") {
+            newActivity.totalTime = 0;
+        }
+
+        if (newActivity.weight === "") {
+            newActivity.weight = 0;
+        }
+
         let response = await axios.put('http://127.0.0.1:5000/activities/' + this.state.id, {
             "id": newActivity.id,
             "type": newActivity.type,
