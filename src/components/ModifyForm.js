@@ -45,6 +45,10 @@ class ModifyForm extends React.Component {
             newActivity.weight = 0;
         }
 
+        if ((isNaN(newActivity.reps)) || (isNaN(newActivity.totalTime)) || (isNaN(newActivity.weight))) {
+            alert("You need to writte a number.")
+        }
+
         let response = await axios.put('http://127.0.0.1:5000/activities/' + this.state.id, {
             "id": newActivity.id,
             "type": newActivity.type,
