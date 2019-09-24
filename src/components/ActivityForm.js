@@ -29,6 +29,10 @@ class ActivityForm extends React.Component {
             alert("You need select the activity and put the repetitions you did!!")
         }
 
+        if ((isNaN(newActivity.reps)) || (isNaN(newActivity.totalTime)) || (isNaN(newActivity.weight))) {
+            alert("You need to writte a number.")
+        }
+
         let response = await axios.post('http://127.0.0.1:5000/activities',{
               "type": newActivity.type,
               "reps": newActivity.reps,
