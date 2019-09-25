@@ -42,27 +42,31 @@ class ActivitiesPerDayPage extends React.Component {
     }
     render() {
         return (
-            <div className="container">
-                <div> DAY: {this.state.date} </div>
+            <div className="card mx-auto mt-4" style={{width: 1000}}>
+                <h5 className="card-header bg-info text-light text-center py-4"> 
+                    <strong>ACTIVITIES OF DAY: {this.state.date}</strong>
+                </h5>
                 <Link
-                    className="btn btn-secondary mr-3"
+                    className="btn btn-outline-success btn-rounded btn-block z-depth-0 waves-effect"
                     to={"/activityform?day=" + this.state.date} >
                         Create new activity
                 </Link>
-                <div className="card-columns">
-                    {this.state.activities.map(activity => {
-                        return (
-                            <Activity
-                                onActivityDeleted={this.removeActivity.bind(this)}
-                                key={activity.id}
-                                type={activity.type}
-                                reps={activity.reps}
-                                totalTime={activity.totalTime}
-                                weight={activity.weight}
-                                id={activity.id}
-                            />
-                        );
-                    })}
+                <div className="card-body mx-auto">
+                    <div className="card-columns">
+                        {this.state.activities.map(activity => {
+                            return (
+                                <Activity
+                                    onActivityDeleted={this.removeActivity.bind(this)}
+                                    key={activity.id}
+                                    type={activity.type}
+                                    reps={activity.reps}
+                                    totalTime={activity.totalTime}
+                                    weight={activity.weight}
+                                    id={activity.id}
+                                />
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         );

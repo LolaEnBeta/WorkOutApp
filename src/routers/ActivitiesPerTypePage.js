@@ -43,17 +43,17 @@ class ActivitiesPerTypePage extends React.Component {
     render() {
         return (
             <div className="card mx-auto mt-4" style={{width: 1000}}>
-                    <h5 className="card-header bg-info text-light text-center py-4">
-                        <strong>Here you can see all the activities or select by <em>type</em>:</strong>
-                    </h5>
-                    <select
-                        className="browser-default custom-select"
-                        name="type"
-                        onChange={event => this.changeStateValues(event.target)}>
-                        <option value="">Show all the activities</option>
-                        <option value="Pushups">Show Pushups activities</option>
-                        <option value="ABS">Show ABS activities</option>
-                    </select>
+                <h5 className="card-header bg-info text-light text-center py-4">
+                    <strong>Here you can see all the activities or select by <em>type</em>:</strong>
+                </h5>
+                <select
+                    className="browser-default custom-select"
+                    name="type"
+                    onChange={event => this.changeStateValues(event.target)}>
+                    <option value="">Show all the activities</option>
+                    <option value="Pushups">Show Pushups activities</option>
+                    <option value="ABS">Show ABS activities</option>
+                </select>
                 <div className="card-body mx-auto">
                     <div className="card-columns">
                         {this.state.activities.map(activity => {
