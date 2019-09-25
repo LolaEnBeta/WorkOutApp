@@ -42,7 +42,7 @@ class ActivitiesPerDayPage extends React.Component {
     }
     render() {
         return (
-            <div className="card mx-auto mt-4" style={{width: 1000}}>
+            <div className="card mx-auto m-4" style={{width: 1000}}>
                 <h5 className="card-header bg-info text-light text-center py-4"> 
                     <strong>Activities of day: {this.state.date}</strong>
                 </h5>
