@@ -11,6 +11,17 @@ class ActivitiesPerTypePage extends React.Component {
         }
     }
 
+    componentDidMount() {
+        axios.get('http://127.0.0.1:5000/type', {
+            params: {
+                type: this.state.type,
+            }
+        }).then(res => {
+            const activities = res.data;
+            this.setState({ activities })
+        });
+    }
+
     async removeActivity(id) {
         let response = await axios.delete('http://127.0.0.1:5000/activities/' + id);
 
@@ -50,7 +61,7 @@ class ActivitiesPerTypePage extends React.Component {
                     className="browser-default custom-select"
                     name="type"
                     onChange={event => this.changeStateValues(event.target)}>
-                    <option value="">Show all the activities</option>
+                    <option value=''>Show all the activities</option>
                     <option value="Pushups">Show Pushups activities</option>
                     <option value="ABS">Show ABS activities</option>
                 </select>
