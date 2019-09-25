@@ -16,9 +16,9 @@ class Activity extends React.Component {
 
     render() {
         return(
-            <div className="card m-5" style={{width: 250}}>
-                <div className="card-header">
-                    {this.props.type}
+            <div className="card m-4 text-center" style={{width: 225}}>
+                <div className="card-header text-white bg-primary">
+                    <strong>{this.props.type}</strong>
                 </div>
                 <ul className="list-group">
                     <li className="list-group-item d-flex justify-content-between align-items-center">
@@ -38,19 +38,23 @@ class Activity extends React.Component {
                         <span className="badge badge-primary badge-pill">{this.props.id}</span>
                     </li>
                 </ul>
-                <button
-                    className="btn btn-danger"
-                    onClick={this.deleteActivity.bind(this)}>
-                    Delete
-                </button>
-                <button
-                    className="btn btn-danger">
-                    <Link
-                        to={"/modifyform?id=" + this.state.id + "&type=" + this.props.type + "&reps=" + this.props.reps + "&totalTime=" + this.props.totalTime + "&weight=" + this.props.weight}
-                        >
-                        Modify
-                    </Link>
-                </button>
+
+                    <div className=" align-items-start">
+                            <button
+                                className="btn btn-outline-danger btn-rounded btn-block z-depth-0 waves-effect"
+                                onClick={this.deleteActivity.bind(this)}>
+                                Delete
+                            </button>
+                            <button
+                                className="btn btn-outline-warning btn-rounded btn-block z-depth-0 waves-effect">
+                                <Link
+                                    className="text-warning"
+                                    to={"/modifyform?id=" + this.state.id + "&type=" + this.props.type + "&reps=" + this.props.reps + "&totalTime=" + this.props.totalTime + "&weight=" + this.props.weight}
+                                    >
+                                    Modify
+                                </Link>
+                            </button>
+                    </div>
             </div>
         );
     }
