@@ -36,16 +36,23 @@ class CalendarPage extends React.Component {
 
   render() {
     return (
-      <div className="container mt-5 ml-5">
-        <Calendar
-          onChange={this.onChange.bind(this)}
-          value={this.state.date} />
-
+      <div className="card mx-auto mt-4" style={{width: 1000}}>
+        <h5 className="card-header bg-info text-light text-center py-4">
+          <strong>Select one day and see the activities</strong>
+        </h5>
         <Link
-          className="btn btn-secondary mr-3"
+          className="btn btn-light text-secondary"
           to={"/day?day=" + this.state.currentDay} >
-          See activities
+          <strong>CHOOSE THIS DAY</strong>
         </Link>
+        <div>
+          <Calendar
+            className="card-body mx-auto m-4"
+            onChange={this.onChange.bind(this)}
+            value={this.state.date} />
+
+        </div>
+
       </div>
     );
   }

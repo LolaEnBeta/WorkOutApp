@@ -44,7 +44,7 @@ class ActivitiesPerDayPage extends React.Component {
         return (
             <div className="card mx-auto mt-4" style={{width: 1000}}>
                 <h5 className="card-header bg-info text-light text-center py-4"> 
-                    <strong>ACTIVITIES OF DAY: {this.state.date}</strong>
+                    <strong>Activities of day: {this.state.date}</strong>
                 </h5>
                 <Link
                     className="btn btn-outline-success btn-rounded btn-block z-depth-0 waves-effect"
