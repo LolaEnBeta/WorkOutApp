@@ -71,7 +71,7 @@ class ModifyForm extends React.Component {
     render() {
         return(
             <div className="card mx-auto" style={{width: 450}}>
-                <h5 className="card-header white-text text-center py-4">
+                <h5 className="card-header bg-danger text-white text-center py-4">
                     <strong>Modify the activity</strong>
                 </h5>
                 <div className="card-body mx-4 mt-4">
@@ -122,7 +122,7 @@ class ModifyForm extends React.Component {
                         <div className="row d-flex align-items-center mb-4">
                             <div className="col-md-1 col-md-5 d-flex align-items-start">
                                 <div className="text-center">
-                                    <input className="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="MODIFY" />
+                                    <input className="btn btn-outline-danger btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="MODIFY" />
                                 </div>
                             </div>
                         </div>
