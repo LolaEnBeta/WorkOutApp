@@ -24,8 +24,8 @@ class App extends React.Component {
         <div>
           <nav className="navbar navbar-light bg-light">
             <ul>
-              <Link className="btn btn-secondary mr-3" to="/">Home</Link>
-              <Link className="btn btn-secondary mr-3" to="/activities">Activities</Link>
+              <Link className="btn btn-secondary mr-3" to="/">Select day</Link>
+              <Link className="btn btn-secondary mr-3" to="/activities">Select type</Link>
             </ul>
           </nav>
 
