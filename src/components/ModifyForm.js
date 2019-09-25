@@ -70,51 +70,65 @@ class ModifyForm extends React.Component {
 
     render() {
         return(
-            <form
-                className="container"
-                onSubmit={this.modifyActivity.bind(this)}>
+            <div className="card mx-auto" style={{width: 450}}>
+                <h5 className="card-header white-text text-center py-4">
+                    <strong>Modify the activity</strong>
+                </h5>
+                <div className="card-body mx-4 mt-4">
+                    <form
+                        onSubmit={this.modifyActivity.bind(this)}>
+                        <div className="md-form pb-1 pb-md-3">
+                            <select
+                                className="browser-default custom-select"
+                                name="type"
+                                value={this.state.type}
+                                onChange={event => this.changeStateValues(event.target)}>
+                                <option value="">Which activity did you do?</option>
+                                <option value="Pushups">Pushups</option>
+                                <option value="ABS">ABS</option>
+                            </select>
+                        </div>
 
-                <label>
-                    Which activity did you do?
-                    <select
-                        name="type"
-                        value={this.state.type}
-                        onChange={event => this.changeStateValues(event.target)}>
-                        <option value="">Select one</option>
-                        <option value="Pushups">Pushups</option>
-                        <option value="ABS">ABS</option>
-                    </select>
-                </label>
+                        <div className="md-form pb-1 pb-md-3">
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="reps"
+                                placeholder="How many repetitions did you do?"
+                                value={this.state.reps}
+                                onChange={event => this.changeStateValues(event.target)}/>
+                        </div>
 
-                <label>
-                    How many repetitions did you do?
-                    <input
-                        type="text"
-                        name="reps"
-                        value={this.state.reps}
-                        onChange={event => this.changeStateValues(event.target)}/>
-                </label>
+                        <div className="md-form pb-1 pb-md-3">
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="totalTime"
+                                placeholder="How many time did you work out?"
+                                value={this.state.totalTime}
+                                onChange={event => this.changeStateValues(event.target)}/>
+                        </div>
 
-                <label>
-                        How many time did you work out?
-                        <input
-                            type="text"
-                            name="totalTime"
-                            value={this.state.totalTime}
-                            onChange={event => this.changeStateValues(event.target)}/>
-                </label>
+                        <div className="md-form pb-1 pb-md-3">
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="weight"
+                                placeholder="How many weight did you use?"
+                                value={this.state.weight}
+                                onChange={event => this.changeStateValues(event.target)}/>
+                        </div>
 
-                <label>
-                    How many weight did you use?
-                    <input
-                        type="text"
-                        name="weight"
-                        value={this.state.weight}
-                        onChange={event => this.changeStateValues(event.target)}/>
-                </label>
-
-                <input type="submit" value="MODIFY" />
-            </form>
+                        <div className="row d-flex align-items-center mb-4">
+                            <div className="col-md-1 col-md-5 d-flex align-items-start">
+                                <div className="text-center">
+                                    <input className="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="MODIFY" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         );
     }
 }
