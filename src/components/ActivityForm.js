@@ -54,7 +54,7 @@ class ActivityForm extends React.Component {
 
     render() {
         return(
-            <div className="card mx-auto" style={{width: 450}}>
+            <div className="card mx-auto" style={{width: 460}}>
                 <h5 className="card-header bg-success text-white text-center py-4">
                     <strong>Create a new activity</strong>
                 </h5>
@@ -88,7 +88,7 @@ class ActivityForm extends React.Component {
                                 type="text"
                                 className="form-control"
                                 name="reps"
-                                placeholder="How many repetitions did you do?"
+                                placeholder="How many repetitions (or sessions) did you do?"
                                 onChange={event => this.changeStateValues(event.target)}/>
                         </div>
 
@@ -97,7 +97,7 @@ class ActivityForm extends React.Component {
                                 type="text"
                                 className="form-control"
                                 name="totalTime"
-                                placeholder="How many time did you work out?"
+                                placeholder="How many time did you work out? (in minutes)"
                                 onChange={event => this.changeStateValues(event.target)}/>
                             </div>
 
@@ -106,7 +106,7 @@ class ActivityForm extends React.Component {
                                 type="text"
                                 className="form-control"
                                 name="weight"
-                                placeholder="How many weight did you use?"
+                                placeholder="How many weight did you use? (in Kg)"
                                 onChange={event => this.changeStateValues(event.target)}/>
                         </div>
 

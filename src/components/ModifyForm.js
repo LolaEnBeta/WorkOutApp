@@ -105,8 +105,7 @@ class ModifyForm extends React.Component {
                                 className="form-control"
                                 type="text"
                                 name="reps"
-                                placeholder="How many repetitions did you do?"
-                                value={this.state.reps}
+                                placeholder="How many repetitions (or sessions) did you do?"                                value={this.state.reps}
                                 onChange={event => this.changeStateValues(event.target)}/>
                         </div>
 
@@ -115,7 +114,7 @@ class ModifyForm extends React.Component {
                                 className="form-control"
                                 type="text"
                                 name="totalTime"
-                                placeholder="How many time did you work out?"
+                                placeholder="How many time did you work out? (in minutes)"
                                 value={this.state.totalTime}
                                 onChange={event => this.changeStateValues(event.target)}/>
                         </div>
@@ -125,7 +124,7 @@ class ModifyForm extends React.Component {
                                 className="form-control"
                                 type="text"
                                 name="weight"
-                                placeholder="How many weight did you use?"
+                                placeholder="How many weight did you use? (in Kg)"
                                 value={this.state.weight}
                                 onChange={event => this.changeStateValues(event.target)}/>
                         </div>
