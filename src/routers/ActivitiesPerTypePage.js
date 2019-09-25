@@ -62,8 +62,19 @@ class ActivitiesPerTypePage extends React.Component {
                     name="type"
                     onChange={event => this.changeStateValues(event.target)}>
                     <option value=''>Show all the activities</option>
-                    <option value="Pushups">Show Pushups activities</option>
-                    <option value="ABS">Show ABS activities</option>
+                    <option value="Pushups">Pushups</option>
+                    <option value="ABS">ABS</option>
+                    <option value="Jumping jacks">Jumping jacks</option>
+                    <option value="Wall sit">Wall sit</option>
+                    <option value="Squat">Squat</option>
+                    <option value="Lunge">Lunge</option>
+                    <option value="Triceps">Triceps</option>
+                    <option value="Plank">Plank</option>
+                    <option value="Walk">Walk</option>
+                    <option value="Bicycle">Bicycle</option>
+                    <option value="Swim">Swim</option>
+                    <option value="Run">Run</option>
+                    <option value="Yoga">Yoga</option>
                 </select>
                 <div className="card-body mx-auto">
                     <div className="card-columns">

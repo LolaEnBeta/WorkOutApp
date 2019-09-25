@@ -69,6 +69,17 @@ class ActivityForm extends React.Component {
                                 <option value="">Which activity did you do?</option>
                                 <option value="Pushups">Pushups</option>
                                 <option value="ABS">ABS</option>
+                                <option value="Jumping jacks">Jumping jacks</option>
+                                <option value="Wall sit">Wall sit</option>
+                                <option value="Squat">Squat</option>
+                                <option value="Lunge">Lunge</option>
+                                <option value="Triceps">Triceps</option>
+                                <option value="Plank">Plank</option>
+                                <option value="Walk">Walk</option>
+                                <option value="Bicycle">Bicycle</option>
+                                <option value="Swim">Swim</option>
+                                <option value="Run">Run</option>
+                                <option value="Yoga">Yoga</option>
                             </select>
                         </div>
 
