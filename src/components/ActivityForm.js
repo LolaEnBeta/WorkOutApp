@@ -54,22 +54,22 @@ class ActivityForm extends React.Component {
 
     render() {
         return(
-            <div className="card">
-                <h5 className="card-header info-color white-text text-center py-4">
+            <div className="card mx-auto" style={{width: 450}}>
+                <h5 className="card-header white-text text-center py-4">
                     <strong>Create a new activity</strong>
                 </h5>
                 <div className="card-body mx-4 mt-4">
                     <form
                         onSubmit={this.addActivity.bind(this)}>
                         <div className="md-form pb-1 pb-md-3">
-                                <select
-                                    name="type"
-                                    className="browser-default custom-select"
-                                    onChange={event => this.changeStateValues(event.target)}>
-                                    <option value="">Which activity did you do?</option>
-                                    <option value="Pushups">Pushups</option>
-                                    <option value="ABS">ABS</option>
-                                </select>
+                            <select
+                                name="type"
+                                className="browser-default custom-select"
+                                onChange={event => this.changeStateValues(event.target)}>
+                                <option value="">Which activity did you do?</option>
+                                <option value="Pushups">Pushups</option>
+                                <option value="ABS">ABS</option>
+                            </select>
                         </div>
 
                         <div className="md-form pb-1 pb-md-3">
